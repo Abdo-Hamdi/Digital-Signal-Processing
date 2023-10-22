@@ -1,10 +1,12 @@
 import tkinter as tk
 from tkinter import messagebox
-import Task1 ,Task2
+import Task1
+import Task2
+import Task3
 
 # Create the main window
 window = tk.Tk()
-window.geometry("300x200")
+window.geometry("400x400")
 window.title("The Main")
 window.iconbitmap('D:\Digital-Signal-Processing\signal_ icon.ico')
 
@@ -23,24 +25,29 @@ def button_task():
         Task1.Task1_fun()
     elif selected == 2:
         Task2.Task2_fun()
+    elif selected == 3:
+        Task3.Task3_fun()
     else:
         show_message_box()
 
 
-# Radio buttons for selecting Task 1 or Task 2
+# Radio buttons for selecting Task 1 or Task 2 or else
 selected_function = tk.IntVar(value=0)
 
 task1_radio = tk.Radiobutton(window, text="Task 1", variable=selected_function, font=("Arial", 12), value=1)
 task2_radio = tk.Radiobutton(window, text="Task 2", variable=selected_function, font=("Arial", 12), value=2)
+task3_radio = tk.Radiobutton(window, text="Task 3", variable=selected_function, font=("Arial", 12), value=3)
 
-task1_radio.place(x=60, y=40)
-task2_radio.place(x=185, y=40)
-
+task1_radio.pack(side="top", fill="both", expand=True)
+task2_radio.pack(side="top", fill="both", expand=True)
+task3_radio.pack(side="top", fill="both", expand=True)
 # Button to open the task
-open_task_button = tk.Button(window, text="GO", padx=15, pady=5, fg="black", bg="gray", font=("Arial", 12), command=button_task)
-open_task_button.place(x = 80, y = 100)
-
 exit_button = tk.Button(window, text="Exit", padx=15, pady=5, fg="black", bg="red", font=("Arial", 12), command=ex)
-exit_button.place(x = 180, y = 100)
+exit_button.pack(side="bottom", expand=True)
+
+open_task_button = tk.Button(window, text="GO", padx=15, pady=5, fg="black", bg="gray", font=("Arial", 12), command=button_task)
+open_task_button.pack(side="bottom", expand=True)
+
+
 
 window.mainloop()
