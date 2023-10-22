@@ -6,7 +6,7 @@ import Task1 ,Task2
 window = tk.Tk()
 window.geometry("300x200")
 window.title("The Main")
-window.iconbitmap('D:\DSP_PROJECT\signal_ icon.ico')
+window.iconbitmap('D:\Digital-Signal-Processing\signal_ icon.ico')
 
 
 def ex():

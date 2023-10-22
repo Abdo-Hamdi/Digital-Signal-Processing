@@ -12,7 +12,7 @@ def  Task2_fun() :
         analog_freq = float(analog_freq_entry.get())
         sampling_freq = float(sampling_freq_entry.get())
         if analog_freq == 0:
-            message = "امسح يسطا"
+            message = "delete bro"
             messagebox.showinfo("Error", message)
             return
         elif sampling_freq == 0:
@@ -41,8 +41,8 @@ def  Task2_fun() :
             return
         else:
             # Handle the case when sampling_freq is valid for both continuous and discrete signals
-            t_continuous = np.arange(0, 0.5, 10 / (100 * analog_freq))
-            t_discrete = np.arange(0, 0.5, 1 / sampling_freq)
+            t_continuous = np.arange(0, 1, 10 / (100 * analog_freq))
+            t_discrete = np.arange(0, 1, 1 / sampling_freq)
 
             if signal_type == "cos":
                 signal_continuous = A * np.cos(2 * np.pi * analog_freq * t_continuous + theta)

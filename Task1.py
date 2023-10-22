@@ -22,7 +22,7 @@ def Task1_fun():
             # Call the open_file() function to process the file contents and plot
             open_file()
         else:
-            message = "فين الفايل يسطا"
+            message = "Where's the file?"
             messagebox.showinfo("Error", message)
             return
 
