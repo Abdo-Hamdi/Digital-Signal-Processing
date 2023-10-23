@@ -48,6 +48,4 @@ exit_button.pack(side="bottom", expand=True)
 open_task_button = tk.Button(window, text="GO", padx=15, pady=5, fg="black", bg="gray", font=("Arial", 12), command=button_task)
 open_task_button.pack(side="bottom", expand=True)
 
-
-
 window.mainloop()
