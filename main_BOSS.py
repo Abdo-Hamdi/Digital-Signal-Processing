@@ -6,9 +6,10 @@ import Task3
 import Task4
 import Task5
 import Task6
+import Task7
 # Create the main window
 window = tk.Tk()
-window.geometry("400x400")
+window.geometry("400x500")
 window.title("The Main")
 window.iconbitmap('D:\Project\Digital-Signal-Processing\signal_ icon.ico')
 
@@ -37,6 +38,8 @@ def button_task():
         Task5.Task5_fun()
     elif selected == 6:
         Task6.Task6_fun()
+    elif selected == 7:
+        Task7.Task7_fun()
     else:
         show_message_box()
 
@@ -50,6 +53,7 @@ task3_radio = tk.Radiobutton(window, text="Task 3", variable=selected_function, 
 task4_radio = tk.Radiobutton(window, text="Task 4", variable=selected_function, font=("Arial", 12), value=4)
 task5_radio = tk.Radiobutton(window, text="Task 5", variable=selected_function, font=("Arial", 12), value=5)
 task6_radio = tk.Radiobutton(window, text="Task 6", variable=selected_function, font=("Arial", 12), value=6)
+task7_radio = tk.Radiobutton(window, text="Task 7", variable=selected_function, font=("Arial", 12), value=7)
 
 task1_radio.pack(side="top", fill="both", expand=True)
 task2_radio.pack(side="top", fill="both", expand=True)
@@ -57,6 +61,7 @@ task3_radio.pack(side="top", fill="both", expand=True)
 task4_radio.pack(side="top", fill="both", expand=True)
 task5_radio.pack(side="top", fill="both", expand=True)
 task6_radio.pack(side="top", fill="both", expand=True)
+task7_radio.pack(side="top", fill="both", expand=True)
 
 # Button to open the task
 exit_button = tk.Button(window, text="Exit", padx=15, pady=5, fg="black", bg="red", font=("Arial", 12), command=ex)
