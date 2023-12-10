@@ -1,0 +1,10 @@
+Normalized Cross-Correlation Result 1:
+0.9719273929377941
+Normalized Cross-Correlation Result 2:
+0.5916079783099616
+Normalized Cross-Correlation Result 3:
+0.3803194146278325
+Normalized Cross-Correlation Result 4:
+0.4225771273642583
+Normalized Cross-Correlation Result 5:
+0.6761234037828132
