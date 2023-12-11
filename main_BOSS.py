@@ -11,7 +11,7 @@ import Task8
 import Task9
 # Create the main window
 window = tk.Tk()
-window.geometry("400x500")
+window.geometry("300x400")
 window.title("The Main")
 window.iconbitmap('D:\Project\Digital-Signal-Processing\signal_ icon.ico')
 
@@ -65,22 +65,22 @@ task9_radio = tk.Radiobutton(window, text="Task 9", variable=selected_function, 
 
 
 
-task1_radio.pack(side="top", fill="both", expand=True)
-task2_radio.pack(side="top", fill="both", expand=True)
-task3_radio.pack(side="top", fill="both", expand=True)
-task4_radio.pack(side="top", fill="both", expand=True)
-task5_radio.pack(side="top", fill="both", expand=True)
-task6_radio.pack(side="top", fill="both", expand=True)
-task7_radio.pack(side="top", fill="both", expand=True)
-task8_radio.pack(side="top", fill="both", expand=True)
-task9_radio.pack(side="top", fill="both", expand=True)
+task1_radio.grid(row=0, column=0, pady=10, padx=10)
+task2_radio.grid(row=0, column=2, pady=10, padx=10)
+task3_radio.grid(row=1, column=0, pady=10, padx=10)
+task4_radio.grid(row=1, column=2, pady=10, padx=10)
+task5_radio.grid(row=2, column=0, pady=10, padx=10)
+task6_radio.grid(row=2, column=2, pady=10, padx=10)
+task7_radio.grid(row=3, column=0, pady=10, padx=10)
+task8_radio.grid(row=3, column=2, pady=10, padx=10)
+task9_radio.grid(row=4, column=0, pady=10, padx=10)
 
 # Button to open the task
 exit_button = tk.Button(window, text="Exit", padx=15, pady=5, fg="black", bg="red", font=("Arial", 12), command=ex)
-exit_button.pack(side="bottom", expand=True)
+exit_button.grid(row=6, column=1, pady=10, padx=10)
 
 open_task_button = tk.Button(window, text="GO", padx=15, pady=5, fg="black", bg="gray", font=("Arial", 12),
                              command=button_task)
-open_task_button.pack(side="bottom", expand=True)
+open_task_button.grid(row=5, column=1, pady=10, padx=10)
 
 window.mainloop()
