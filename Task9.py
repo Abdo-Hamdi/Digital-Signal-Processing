@@ -37,6 +37,7 @@ def Task9_fun():
             try:
                 signal1 = np.loadtxt(file_path1, skiprows=3, usecols=1)
                 signal2 = np.loadtxt(file_path2, skiprows=3, usecols=1)
+
                 if len(signal1) != len(signal2):
                     total_length = len(signal1) + len(signal2) - 1
                     signal1 = np.pad(signal1, (0, total_length - len(signal1)), 'constant')
@@ -48,34 +49,25 @@ def Task9_fun():
                 signal1dft = dft(signal1)
                 signal2dft = dft(signal2)
 
-                fre_domin_corr = signal1dft * np.conjugate(signal2dft)
-                res_signal = idft(fre_domin_corr)
+                fre_corr = np.conjugate(signal1dft) * signal2dft
+
+                res_signal = idft(fre_corr)
+
                 res_signal = np.round(res_signal.real).astype(int)
-                cnt = 1
-                correlation_results = np.zeros(5)
+
                 if selected == 1:
                     normalization_factor = np.sqrt(np.sum(signal1 ** 2)) * np.sqrt(np.sum(signal2 ** 2))
                     normalized_corr_result = res_signal / normalization_factor
-                    correlation_results = np.zeros(5)
-                    correlation_results[0] = normalized_corr_result[0]
-                    cnt = 1
-                    for i in range(1, len(ind)):
-                        correlation_results[cnt] = normalized_corr_result[len(ind) - i]
-                        cnt += 1
-                    CompareSignal.Compare_Signals("CorrOutput.txt", ind, correlation_results)
+                    res_signal = normalized_corr_result
+                    CompareSignal.Compare_Signals("CorrOutput.txt", ind, normalized_corr_result)
                 if selected == 2:
-                    correlation_results[0] = res_signal[0]
-                    for i in range(1, len(ind)):
-                        correlation_results[cnt] = res_signal[len(ind) - i]
-                        cnt += 1
-                    correlation_results /= len(res_signal)
-                    CompareSignal.Compare_Signals("Corr_Output.txt", ind, correlation_results)
+                    CompareSignal.Compare_Signals("Corr_Output.txt", ind, res_signal/len(res_signal))
                 fig, axes = plt.subplots(3, 1, figsize=(10, 9))
                 axes[0].plot(ind, signal1)
                 axes[0].set_title('Signal 1')
                 axes[1].plot(ind, signal2)
                 axes[1].set_title('Signal 2')
-                axes[2].plot(ind, correlation_results)
+                axes[2].plot(ind, res_signal)
                 axes[2].set_title('Result')
                 plt.tight_layout()
                 plt.show()
@@ -83,7 +75,7 @@ def Task9_fun():
                 messagebox.showerror("Error", "Invalid input. Please ensure the signals have the same length.")
 
 
-    def Fast_Covo():
+    def Fast_Conv():
         file_path1 = filedialog.askopenfilename(title="Select Signal File 1", filetypes=[("Text files", "*.txt")])
         file_path2 = filedialog.askopenfilename(title="Select Signal File 2", filetypes=[("Text files", "*.txt")])
 
@@ -91,19 +83,26 @@ def Task9_fun():
             data_x = np.loadtxt(file_path1, skiprows=3)
             x_ind = data_x[:, 0]
             x = data_x[:, 1]
+
             data_h = np.loadtxt(file_path2, skiprows=3)
             h_ind = data_h[:, 0]
             h = data_h[:, 1]
             total_length = len(x) + len(h) - 1
-            x_padded = np.pad(x, (0, total_length - len(x)), 'constant')
-            h_padded = np.pad(h, (0, total_length - len(h)), 'constant')
+            x_pad = np.pad(x, (0, total_length - len(x)), 'constant')
+            h_pad = np.pad(h, (0, total_length - len(h)), 'constant')
             result_ind = list(range(int(min(x_ind) + min(h_ind)), int(max(x_ind) + max(h_ind) + 1)))
-            signal1dft = dft(x_padded)
-            signal2dft = dft(h_padded)
-            fre_domin_conv = signal1dft * signal2dft
-            res_signal = idft(fre_domin_conv)
+
+            signal1dft = dft(x_pad)
+            signal2dft = dft(h_pad)
+
+            fre_conv = signal1dft * signal2dft
+
+            res_signal = idft(fre_conv)
+
             res_signal = np.round(res_signal.real).astype(int)
+
             ConvTest.ConvTest(result_ind, res_signal)
+
             fig, axes = plt.subplots(3, 1, figsize=(12, 10))
             axes[0].plot(x_ind, x)
             axes[0].set_title('X Signal')
@@ -134,7 +133,7 @@ def Task9_fun():
     label_conv = tk.Label(window, text="Convolution", font=("Arial", 25))
     label_conv.grid(row=3, column=1, pady=10, padx=10)
 
-    import_button = tk.Button(window, text="Convolution", padx=15, pady=5, fg="black", bg="lightblue", font=("Arial", 12), command=Fast_Covo)
+    import_button = tk.Button(window, text="Convolution", padx=15, pady=5, fg="black", bg="lightblue", font=("Arial", 12), command=Fast_Conv)
     import_button.grid(row=4, column=1, pady=10, padx=10)
 
     label_conv = tk.Label(window, text="Exit", font=("Arial", 25))
