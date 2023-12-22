@@ -9,12 +9,11 @@ import Task6
 import Task7
 import Task8
 import Task9
+import Task10
 # Create the main window
 window = tk.Tk()
 window.geometry("300x400")
 window.title("The Main")
-window.iconbitmap('D:\Project\Digital-Signal-Processing\signal_ icon.ico')
-
 
 def ex():
     exit()
@@ -46,6 +45,8 @@ def button_task():
         Task8.Task8_fun()
     elif selected == 9:
         Task9.Task9_fun()
+    elif selected == 10:
+        Task10.Task10_fun()
     else:
         show_message_box()
 
@@ -62,7 +63,7 @@ task6_radio = tk.Radiobutton(window, text="Task 6", variable=selected_function, 
 task7_radio = tk.Radiobutton(window, text="Task 7", variable=selected_function, font=("Arial", 12), value=7)
 task8_radio = tk.Radiobutton(window, text="Task 8", variable=selected_function, font=("Arial", 12), value=8)
 task9_radio = tk.Radiobutton(window, text="Task 9", variable=selected_function, font=("Arial", 12), value=9)
-
+task10_radio = tk.Radiobutton(window, text="Task 10", variable=selected_function, font=("Arial", 12), value=10)
 
 
 task1_radio.grid(row=0, column=0, pady=10, padx=10)
@@ -74,6 +75,7 @@ task6_radio.grid(row=2, column=2, pady=10, padx=10)
 task7_radio.grid(row=3, column=0, pady=10, padx=10)
 task8_radio.grid(row=3, column=2, pady=10, padx=10)
 task9_radio.grid(row=4, column=0, pady=10, padx=10)
+task10_radio.grid(row=4, column=2, pady=10, padx=10)
 
 # Button to open the task
 exit_button = tk.Button(window, text="Exit", padx=15, pady=5, fg="black", bg="red", font=("Arial", 12), command=ex)

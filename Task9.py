@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def Task9_fun():
+
     def dft(signal):
         N = len(signal)
         dft_result = np.zeros(N, dtype=np.complex128)

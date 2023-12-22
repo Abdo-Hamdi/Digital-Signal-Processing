@@ -23,29 +23,17 @@ def Task8_fun():
 
         if file_path1 and file_path2:
             try:
-                # Load original signals
                 signal1 = np.loadtxt(file_path1, skiprows=3, usecols=1)
                 signal2_original = np.loadtxt(file_path2, skiprows=3, usecols=1)
-
-                # Initialize an array to store correlation results
                 correlation_results = []
-
-                # Compute and store the normalized cross-correlation for the original signals
                 correlation_result_original = normalized_cross_correlation(signal1, signal2_original)
                 correlation_results.append(correlation_result_original)
-
-                # Perform additional correlations for shifted signals
                 for shift in range(1, 5):
-                    # Compute and store the normalized cross-correlation for the shifted signal
                     correlation_result_shifted = normalized_cross_correlation(signal1, np.roll(signal2_original, shift=-shift))
                     correlation_results.append(correlation_result_shifted)
-
-                # Save results to a file
                 with open("correlation_results.txt", "w") as file:
                     for i, result in enumerate(correlation_results):
                         file.write(f'Normalized Cross-Correlation Result {i + 1}:\n{result}\n')
-
-                # Display success message
                 messagebox.showinfo("Success", "Normalized Cross-Correlation Results saved to 'correlation_results.txt'")
                 indices = [0, 1, 2, 3, 4]
                 CompareSignal.Compare_Signals("CorrOutput.txt", indices, correlation_results)
